@@ -1,3 +1,17 @@
 h1 {
   font-size: 20px;
 }
+
+.navbar {
+  background-color: #5F3694;
+}
+
+.navbar-item {
+  color: #fff !important;
+}
+
+.hero.homepage {
+  background-image: url(http://bjournal.co/wp-content/uploads/2015/12/SoHoChi_075_copy123.jpg);
+  background-size: cover;
+  height: 70vh;
+}

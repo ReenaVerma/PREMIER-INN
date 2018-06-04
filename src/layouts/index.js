@@ -59,8 +59,9 @@ class Layout extends React.Component {
   render() {
     return(
       <div>
-        <Header />
+
         <Navbar />
+        <Header />
       </div>
     );
   }
