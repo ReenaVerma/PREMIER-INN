@@ -15,3 +15,7 @@ h1 {
   background-size: cover;
   height: 70vh;
 }
+
+.navbar-burger {
+  background-color: #fff;
+}
