@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Header from '../components/header';
+import Navbar from '../components/Navbar';
 
 import './index.css';
 
@@ -16,8 +17,8 @@ class Layout extends React.Component {
       searchData: ''
     };
 
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // COMPONENT WILL MOUNT
@@ -59,6 +60,7 @@ class Layout extends React.Component {
     return(
       <div>
         <Header />
+        <Navbar />
       </div>
     );
   }
