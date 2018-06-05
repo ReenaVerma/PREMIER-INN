@@ -3,26 +3,17 @@ import React from 'react';
 
 const Results = ({places}) => {
 
-  // console.log('from loaders', places);
-
-  // CALL FOR ID TO PHOTOS
-
-  console.log('PHOTOS', places);
-  // for (var i = 0; i < places.length; i++) {
-  //   places[i];
-  //   console.log('PHOTO ID', i);
+  // for(var i = 0; i < photos.length; i++) {
+  //   const photosID = photos[i].venue.id;
+  //   console.log(photos[i].venue.id);
+  //
+  //   axios.get(`https://api.foursquare.com/v2/venues/${photosID}/photos?client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=20130815&ll=40.7,-74`)
+  //     .then(res => {
+  //       console.log('IDS RES:', res.data.response.photos.items[1]);
+  //       // console.log('IDS RES:', res.data.response.photos.items[1].prefix.concat(res.data.response.photos.items[1].suffix));
+  //     });
   // }
 
-  for(var i = 0; i < places.length; i++) {
-    console.log(places[i].venue.id);
-  }
-
-  // photos.forEach(m => console.log('FUCK SAKE', m.venue));
-  // const placesId = photos.map();
-  // console.log('MAPPED MANUAL PLACES', m.id);
-
-  // axios.get(`https://api.foursquare.com/v2/venues/${photos}/photos?client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=20130815&ll=40.7,-74`)
-  //   .then(console.log('CONSOLE AFTER SECOND AXIOS REQUEST: return IDs', this.state.places[0].venue.id));
 
 
   return (

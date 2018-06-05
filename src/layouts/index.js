@@ -28,31 +28,59 @@ class Layout extends React.Component {
     console.log('COMPONENT WILL MOUNT');
   }
 
-  // MAKE AXIOS REQUEST/COMPONENT DID MOUNT
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT');
-
     axios.get('https://api.foursquare.com/v2/venues/explore?near=london&&client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=201806044&venuePhotos=1')
-      .then(res => {
-        console.log('DATA', res.data.response.groups[0].items);
+      .then((res) => {
+        // RES VENUE DATA IS STORED IN PLACES
         this.setState(
           { places: res.data.response.groups[0].items.slice(0,12)});
-        console.log('PLACE ID', this.state.places[0].venue.id);
-        // this.setState(
-        //   { photos: this.state.places[0].venue.id})
 
+        // LOOP THROUGH PLACES RES AND PULL OUT THE VENUE ID.
+        for(var i = 0; i < this.state.places.length; i++) {
+          const photosID = this.state.places[i].venue.id;
+          console.log(this.state.places[i].venue.id);
+
+          // NOW TAKE THE VENUE ID AND PLACE IT IN THIS SECOND API REQUEST
+          return axios.get(`https://api.foursquare.com/v2/venues/${photosID}/photos?client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=20130815&ll=40.7,-74`);
+        }
+      })
+      // THEN CONSOLE LOG THIS PHOTO RES DATA.
+      .then((res) => {
+        console.log('IDS RES:', res.data.response.photos.items[1]);
+        // console.log('IDS RES:', res.data.response.photos.items[1].prefix.concat(res.data.response.photos.items[1].suffix));
+      })
+      .catch((err) => {
+        console.log(err);
       });
-
-
-    // CALL FOR ID TO PHOTOS
-    // axios.get('https://api.foursquare.com/v2/venues/4b4e7802f964a520dfee26e3/photos?client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=20130815&ll=40.7,-74')
-    //   .then(res => {
-    //     console.log('DATA', this.state.places[0].venue.id);
-    //     this.setState(
-    //       { places: res.data.response.groups[0].items.slice(0,12)}
-    //     );
-    //   });
   }
+
+  // MAKE AXIOS REQUEST/COMPONENT DID MOUNT
+  // componentDidMount() {
+  //   console.log('COMPONENT DID MOUNT');
+  //
+  //   axios.get('https://api.foursquare.com/v2/venues/explore?near=london&&client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=201806044&venuePhotos=1')
+  //     .then(res => {
+  //       // console.log('DATA', res.data.response.groups[0].items);
+  //       this.setState(
+  //         { places: res.data.response.groups[0].items.slice(0,12)});
+  //       this.setState(
+  //         { photos: res.data.response.groups[0].items.slice(0,12)});
+  //     });
+  // }
+
+  // MAKE AXIOS REQUEST/COMPONENT DID MOUNT
+  // componentDidMount() {
+  //   console.log('COMPONENT DID MOUNT');
+  //
+  //   axios.get('https://api.foursquare.com/v2/venues/explore?near=london&&client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=201806044&venuePhotos=1')
+  //     .then(res => {
+  //       // console.log('DATA', res.data.response.groups[0].items);
+  //       this.setState(
+  //         { places: res.data.response.groups[0].items.slice(0,12)});
+  //       this.setState(
+  //         { photos: res.data.response.groups[0].items.slice(0,12)});
+  //     });
+  // }
 
   // LISTEN TO FORM ENTRY/HANDLE CHANGE
   handleChange(e) {
@@ -66,7 +94,7 @@ class Layout extends React.Component {
     axios.get(`https://api.foursquare.com/v2/venues/explore?near=${this.state.searchData}&client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=201806044`)
       .then(res => {
         this.setState({ places: res.data.response.groups[0].items.slice(0,12)});
-        console.log(res.data.response.groups[0].items);
+        // console.log(res.data.response.groups[0].items);
       });
   }
 
@@ -82,6 +110,7 @@ class Layout extends React.Component {
         />
         <Results
           places={this.state.places}
+          photos={this.state.photos}
         />
       </div>
     );
