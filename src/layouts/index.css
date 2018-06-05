@@ -19,3 +19,25 @@ h1 {
 .navbar-burger {
   background-color: #fff;
 }
+/*
+.hero {
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+} */
+
+form {
+  width: 70%;
+  background-color: rgba(0,0,0,0.5);
+
+}
+
+input[type=text] {
+  /* background-color:rgba(255,255,255, 0.0); */
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+  color: $almost-black;
+  font-size: 14px;
+  width: 70%;
+}

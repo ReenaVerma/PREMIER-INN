@@ -15,7 +15,8 @@ class Layout extends React.Component {
 
     this.state = {
       places: [],
-      searchData: ''
+      searchData: '',
+      photos: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,9 +36,22 @@ class Layout extends React.Component {
       .then(res => {
         console.log('DATA', res.data.response.groups[0].items);
         this.setState(
-          { places: res.data.response.groups[0].items.slice(0,12)}
-        );
+          { places: res.data.response.groups[0].items.slice(0,12)});
+        console.log('PLACE ID', this.state.places[0].venue.id);
+        // this.setState(
+        //   { photos: this.state.places[0].venue.id})
+
       });
+
+
+    // CALL FOR ID TO PHOTOS
+    // axios.get('https://api.foursquare.com/v2/venues/4b4e7802f964a520dfee26e3/photos?client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=20130815&ll=40.7,-74')
+    //   .then(res => {
+    //     console.log('DATA', this.state.places[0].venue.id);
+    //     this.setState(
+    //       { places: res.data.response.groups[0].items.slice(0,12)}
+    //     );
+    //   });
   }
 
   // LISTEN TO FORM ENTRY/HANDLE CHANGE
