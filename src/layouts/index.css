@@ -10,6 +10,25 @@ h2 {
   font-size: 20px;
 }
 
+h3.title {
+  color: #5F3694;
+  padding-bottom: 20px;
+}
+
+h4 {
+  color: #5F3694;
+  font-size: 25px;
+
+}
+
+h6 {
+  font-size: 14px;
+}
+
+section:last-child {
+  margin: 5%;
+}
+
 .navbar {
   background-color: #5F3694;
   height: 80px;
@@ -17,23 +36,27 @@ h2 {
 
 .navbar-item {
   color: #fff !important;
+  background-color: #5F3694;
 }
 
-.hero.homepage {
-  background-image: linear-gradient(rgba(0,0,0,0.8), transparent), url(http://bjournal.co/wp-content/uploads/2015/12/SoHoChi_075_copy123.jpg);
-  /* https://s3-eu-west-1.amazonaws.com/video.gallereplay.com/artistarea/Restaurant%20at%20night_23376c1c-7d1e-4d6f-8efb-c581529540fb/Cinemagraph_plain/1280x720/cinemagraph.jpg */
-  background-size: cover;
-  height: 70vh;
+.navbar-item:hover {
+  color: #5F3694 !important;
 }
 
 .navbar-burger {
   background-color: #fff;
+  height: 70px;
 }
-/*
-.hero {
-  background-color: rgba(0,0,0,0.5);
-  width: 100%;
-} */
+
+.navbar-burger:hover {
+    background-color: none !important;
+}
+
+.hero.homepage {
+  background-image: linear-gradient(rgba(0,0,0,0.8), transparent), url(http://bjournal.co/wp-content/uploads/2015/12/SoHoChi_075_copy123.jpg);
+  background-size: cover;
+  height: 70vh;
+}
 
 
 .hero-margin {
@@ -43,12 +66,12 @@ h2 {
 form {
   width: 100%;
   height: 100px;
-  /* background-color: rgba(0,0,0,0.5); */
   border-radius: 5px;
-
 }
 
-
+form.level-item {
+  margin: 0 auto;
+}
 
 input[type=text] {
   background-color:rgba(255,255,255, 0.8);
@@ -64,17 +87,37 @@ input[type=text] {
 }
 
 input::placeholder {
-  /* font-weight: lighter; */
-  /* color: black; */
   font-size: 20px;
   text-align: left;
   color: purple
     }
 
+.box {
+  margin-bottom: 20px;
+}
+
+.image {
+  margin-bottom: 20px;
+}
 
 .button.is-large {
     font-size: 1rem;
     height: 60px;
     border: 0;
     color: purple;
+  }
+
+  @media only screen and (max-width: 786px) {
+
+    form {
+      width: 80%;
+    }
+
+    form.level-item {
+      margin: 0 auto;
+    }
+
+    input[type=text] {
+      width: 100%;
+    }
   }

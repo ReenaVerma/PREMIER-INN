@@ -16,7 +16,8 @@ class Layout extends React.Component {
     this.state = {
       places: [],
       searchData: '',
-      photos: []
+      photos: [],
+      city: 'London'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,12 +29,15 @@ class Layout extends React.Component {
     console.log('COMPONENT WILL MOUNT');
   }
 
+
+  //
   componentDidMount() {
     axios.get('https://api.foursquare.com/v2/venues/explore?near=london&&client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=201806044&venuePhotos=1')
       .then((res) => {
         // RES VENUE DATA IS STORED IN PLACES
         this.setState(
           { places: res.data.response.groups[0].items.slice(0,12)});
+        console.log(res.data.response.groups[0].items.slice(0,12));
 
         // LOOP THROUGH PLACES RES AND PULL OUT THE VENUE ID.
         for(var i = 0; i < this.state.places.length; i++) {
@@ -82,6 +86,8 @@ class Layout extends React.Component {
   //     });
   // }
 
+  
+
   // LISTEN TO FORM ENTRY/HANDLE CHANGE
   handleChange(e) {
     this.setState({ searchData: e.target.value }, () => console.log(this.state.searchData));
@@ -91,6 +97,7 @@ class Layout extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     console.log(this.state.searchData);
+    this.setState({ city: this.state.searchData });
     axios.get(`https://api.foursquare.com/v2/venues/explore?near=${this.state.searchData}&client_id=JUTTZIYT3Y2ECNHCORRDKIPLW1FNSAH2PW0XRLJCMIPRKY1Q&client_secret=220HPNZNEX3I34URWK4SK33IJBA4UJM3PFSRJIFCYRJTGBBN&v=201806044`)
       .then(res => {
         this.setState({ places: res.data.response.groups[0].items.slice(0,12)});
@@ -101,7 +108,7 @@ class Layout extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="animated fadeIn">
 
         <Navbar />
         <Header
@@ -111,6 +118,7 @@ class Layout extends React.Component {
         <Results
           places={this.state.places}
           photos={this.state.photos}
+          city={this.state.city}
         />
       </div>
     );

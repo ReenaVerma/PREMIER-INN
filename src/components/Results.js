@@ -1,7 +1,7 @@
 import React from 'react';
 // import axios from 'axios';
 
-const Results = ({places}) => {
+const Results = ({places, city}) => {
 
   // for(var i = 0; i < photos.length; i++) {
   //   const photosID = photos[i].venue.id;
@@ -17,19 +17,19 @@ const Results = ({places}) => {
 
 
   return (
-    <section className="">
-      <h2 className="title has-text-centered">Heres what we recommend in London</h2>
+    <section>
+      <h3 className="title has-text-centered animated shake slow">Top 9 Recommendations for {city}</h3>
       <div className="columns is-multiline">
-        {places.map((place, i) => <div className="column is-one-quarter" key={i}>
+        {places.map((place, i) => <div className="column is-one-third" key={i}>
           <ul>
             <li>
-              <div className="card-image">
-                <figure className="image">
-                  <h2 className="has-text-centered has-text-grey">Venue: {place.venue.name}</h2>
-                  <h2 className="has-text-centered has-text-grey">Category: {place.venue.categories[0].pluralName}</h2>
-                  <h2 className="has-text-centered has-text-grey">Why?: {place.reasons.items[0].summary}</h2>
-                  <p className="has-text-centered has-text-link">Address: {place.venue.location.formattedAddress}</p>
-                  <p className="has-text-centered has-text-link">ID: {place.venue.id}</p>
+              <div className="card-image box">
+                <figure className="">
+                  <img className="image" src="https://s3-eu-west-1.amazonaws.com/video.gallereplay.com/artistarea/Restaurant%20at%20night_23376c1c-7d1e-4d6f-8efb-c581529540fb/Cinemagraph_plain/1280x720/cinemagraph.jpg"/>
+                  <h4 className="has-text-left purple">{place.venue.name}</h4>
+                  <h5 className="has-text-left has-text-grey">Category: {place.venue.categories[0].pluralName}</h5>
+                  <h5 className="has-text-left has-text-grey">Why? {place.reasons.items[0].summary}</h5>
+                  <h6 className="has-text-left has-text-link">Address: {place.venue.location.formattedAddress.slice(0,4).join(', ')}</h6>
                   {/* <img className="animated rotateIn" src={place.venue.categories[0].icon.prefix.concat(place.venue.categories[0].icon.suffix)}/> */}
                 </figure>
               </div>
